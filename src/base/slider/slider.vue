@@ -39,7 +39,7 @@
         this._initDots()
         this._initSlider()
         if (this.autoPlay) {
-          this._paly()
+          this._play()
         }
       }, 20)
       window.addEventListener('resize', () => {
@@ -91,11 +91,11 @@
 
           if (this.autoPlay) {
             clearTimeout(this.timer)
-            this._paly()
+            this._play()
           }
         })
       },
-      _paly() {
+      _play() {
         let pageIndex = this.currentPageIndex + 1
         if (this.loop) {
           pageIndex += 1
@@ -104,6 +104,15 @@
           this.slider.goToPage(pageIndex, 0, 400)
         }, this.interval)
       }
+    },
+    activated() {
+      if (this.autoPlay) {
+        this._play()
+      }
+    },
+    deactivated() {
+      alert('销毁')
+      clearTimeout(this.timer)
     }
   }
 </script>
