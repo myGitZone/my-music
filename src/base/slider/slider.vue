@@ -111,7 +111,6 @@
       }
     },
     deactivated() {
-      alert('销毁')
       clearTimeout(this.timer)
     }
   }
